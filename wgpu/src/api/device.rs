@@ -600,6 +600,11 @@ impl Device {
         let cache = unsafe { self.inner.create_pipeline_cache(desc) };
         PipelineCache { inner: cache }
     }
+
+    #[cfg(target_arch = "wasm32")]
+    pub fn as_webgpu_device(&self) -> crate::backend::webgpu::webgpu_sys::GpuDevice {
+        self.inner.as_webgpu().inner.clone()
+    }
 }
 
 /// [`Features::EXPERIMENTAL_RAY_QUERY`] must be enabled on the device in order to call these functions.

@@ -291,6 +291,11 @@ impl Buffer {
         unsafe { buffer.context.buffer_as_hal::<A>(buffer) }
     }
 
+    #[cfg(target_arch = "wasm32")]
+    pub fn as_webgpu_buffer(&self) -> crate::backend::webgpu::webgpu_sys::GpuBuffer {
+        self.inner.as_webgpu().inner.clone()
+    }
+
     /// Returns a [`BufferSlice`] referring to the portion of `self`'s contents
     /// indicated by `bounds`. Regardless of what sort of data `self` stores,
     /// `bounds` start and end are given in bytes.

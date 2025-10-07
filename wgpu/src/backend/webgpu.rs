@@ -3,7 +3,7 @@
 mod defined_non_null_js_value;
 mod ext_bindings;
 #[allow(clippy::allow_attributes)]
-mod webgpu_sys;
+pub(crate) mod webgpu_sys;
 
 use alloc::{
     boxed::Box,
@@ -1214,7 +1214,7 @@ struct WebBufferMapState {
 #[derive(Debug, Clone)]
 pub struct WebBuffer {
     /// The associated GPU buffer.
-    inner: webgpu_sys::GpuBuffer,
+    pub(crate) inner: webgpu_sys::GpuBuffer,
     /// The mapped array buffer and mapped range.
     mapping: RefCell<WebBufferMapState>,
     /// Unique identifier for this Buffer.

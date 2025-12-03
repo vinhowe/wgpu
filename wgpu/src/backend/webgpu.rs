@@ -709,7 +709,7 @@ fn map_map_mode(mode: crate::MapMode) -> u32 {
     }
 }
 
-const FEATURES_MAPPING: [(wgt::Features, webgpu_sys::GpuFeatureName); 15] = [
+const FEATURES_MAPPING: [(wgt::Features, webgpu_sys::GpuFeatureName); 16] = [
     (
         wgt::Features::DEPTH_CLIP_CONTROL,
         webgpu_sys::GpuFeatureName::DepthClipControl,
@@ -765,6 +765,10 @@ const FEATURES_MAPPING: [(wgt::Features, webgpu_sys::GpuFeatureName); 15] = [
     (
         wgt::Features::DUAL_SOURCE_BLENDING,
         webgpu_sys::GpuFeatureName::DualSourceBlending,
+    ),
+    (
+        wgt::Features::SUBGROUP,
+        webgpu_sys::GpuFeatureName::Subgroups,
     ),
     (
         wgt::Features::CLIP_DISTANCES,
